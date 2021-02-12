@@ -44,7 +44,7 @@ Find out more at: https://inlets.dev
 INFO[2021/02/12 18:45:39] Connecting to proxy                           url="wss://ENDERECODACONEXAO/tunnel"
 ```
 
-IMPORTANTE: não retorna ao prompt quando é executado. Se retornou ao prompt, corrija o erro informado e execute ele novamente.
+IMPORTANTE: O `inlets` não retorna ao prompt quando é executado com sucesso. Se retornou ao prompt, corrija o erro informado e execute ele novamente.
 
 # Teste o acesso externo ao seu computador
 
