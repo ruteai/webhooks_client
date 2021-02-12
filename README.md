@@ -48,12 +48,12 @@ IMPORTANTE: não retorna ao prompt quando é executado. Se retornou ao prompt, c
 
 # Teste o acesso externo ao seu computador
 
-Deixe o programa inlets rodando na atual janela de comando e *abra uma nova janela de *. Na nova janela de comando vá para o diretório onde os programas executáveis estão e crie nele um arquivo de texto simples chamado *caddyfile* (sem extensão mesmo) e coloque nele o seguinte conteúdo:
+Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas executáveis estão e crie nele um arquivo de texto simples chamado **`caddyfile`** (sem extensão mesmo) e coloque nele o seguinte conteúdo:
 
 ```
 :2015
 
-respond "Funcionou!!! Acessando um site no meu compuatdor local usando uma URL pública."
+respond "Funcionou!!! Acessando um site no meu computqdor local usando uma URL pública."
 ```
 
 Depois de salvar o arquivo execute o seguinte comando:
@@ -62,5 +62,5 @@ Depois de salvar o arquivo execute o seguinte comando:
 caddy_windows_amd64.exe run --config=caddyfile
 ```
 
-Em seguida abra o seu navegador e acesse a URL https://ẼNDERECODACONEXAO observe se o texto correto é exibido.
+Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO observe se o texto correto é exibido.
 
