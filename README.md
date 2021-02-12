@@ -55,7 +55,7 @@ Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova j
 ```
 :2015
 
-respond "Funcionou!!! Acessando um site no meu computqdor local usando uma URL pública."
+respond "Funcionou!!! Acessando um site no meu computador local usando uma URL pública."
 ```
 
 Depois de salvar o arquivo execute o seguinte comando:
@@ -64,5 +64,5 @@ Depois de salvar o arquivo execute o seguinte comando:
 caddy_windows_amd64.exe run --config=caddyfile
 ```
 
-Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO observe se o texto correto é exibido.
+Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO e confirme se o texto correto é exibido.
 
