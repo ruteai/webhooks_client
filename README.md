@@ -1,6 +1,6 @@
 # Cliente de tunnel local seguro para webhooks de integração com Rute.ai
 
-Com o cliente de webhooks da Rute.ai, você pode conectar os serviços da Rute.ai com o seu aplicativo médico, onde quer que estejam em execução. Ele substitui o gerenciamento de VPNs, abertura de portas do firewall, aquisição de IP permanente para o seu link de acesso à internet e certificados de segurança válidos.
+Com o cliente de webhooks da Rute.ai, você pode conectar os serviços da Rute.ai com o seu aplicativo médico, onde quer que esteja em execução. Ele substitui o gerenciamento de VPNs, abertura de portas do firewall, aquisição de IP permanente para o seu link de acesso à internet e certificados de segurança válidos.
 
 ## Como instalar ?
 
@@ -8,9 +8,9 @@ Com o cliente de webhooks da Rute.ai, você pode conectar os serviços da Rute.a
 
 ```
 cd /
-md Rute
+mkdir Rute
 cd Rute
-md webhook_client
+mkdir webhook_client
 ```
 
 ### Download de programas externos
