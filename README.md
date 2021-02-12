@@ -1,36 +1,66 @@
 # Cliente de tunnel local seguro para webhooks de integração com Rute.ai
 
-A configuration set-up for a Traefik v2 reverse proxy along with Portainer and Docker Compose.
+Com o cliente de webhooks da Rute.ai, você pode conectar os serviços da Rute.ai com o seu aplicativo médico, onde quer que estejam em execução. Ele substitui o gerenciamento de VPNs, abertura de portas do firewall, aquisição de IP permanente para o seu link de acesso à internet e certificados de segurança válidos.
 
-This set-up makes container management & deployment a breeze and the reverse proxy allows for running multiple applications on one Docker host. Traefik will route all the incoming traffic to the appropriate docker containers and through the open-source app Portainer you can speed up software deployments, troubleshoot problems and simplify migrations.
+## Como instalar ?
 
-Detailed explanation how to use this blog post:
-[Docker container management with Traefik v2 and Portainer](https://rafrasenberg.com/posts/docker-container-management-with-traefik-v2-and-portainer/)
-
-## How to run the server?
-
-### Create docker networks
+### Crie um diretório para a aplicação
 
 ```
-docker network create proxy
-docker network create local
+cd /
+md Rute
+cd Rute
+md webhook_client
 ```
 
-### Clone repository
+### Download de programas externos
+
+Faça o download dos seguintes aplicativos para o diretório criado anteriormente:
+
+* [Inlets para Windows](https://github.com/inlets/inlets/releases/download/3.0.0/inlets.exe)
+* [NSSM - Confgiurador de aplicativos como serviços](https://nssm.cc/ci/nssm-2.24-101-g897c7ad.zip)
+* [Caddy - Servidor HTTP para teste da conexão](https://caddyserver.com/api/download?os=windows&arch=amd64&idempotency=17322521938054)
+
+## Teste suas credenciais
+
+Você recebeu da nossa empresa um endereço de conexão e uma chave de autenticação. Faça uma validação deles executando o seguinte comando estando dentro do diretório criado anteriormente:
+
 ```
-$ git clone https://github.com/snapby/docker-traefik-portainer.git ./src
-$ cd src/core
-$ touch ./traefik-data/acme.json
-# sudo chmod 600 ./traefik-data/acme.json
-# cp env-sample .env
-$ docker-compose up -d
+inlets.exe client --url wss://ENDERECODACONEXAO --upstream=http://localhost:80 --token=CHAVE
 ```
 
-## How to use the client?
+Se tudo estiver correto será exibido algo parecido com isso:
 
 ```
-inlets client --url wss://dev001.lt.superchat.com.br --upstream=http://localhost:80 --token=<your_token>
+Welcome to inlets!
+
+Upgrade to inlets PRO for secure, encrypted tunnels and access to fast cloud
+and Kubernetes automation.
+
+Find out more at: https://inlets.dev 
+
+2021/02/12 18:45:39 Starting client - version 3.0.0
+2021/02/12 18:45:39 Upstream:  => http://localhost:2015
+INFO[2021/02/12 18:45:39] Connecting to proxy                           url="wss://ENDERECODACONEXAO/tunnel"
 ```
 
-# Credits
-Based on this [repository](https://github.com/rafrasenberg/docker-traefik-portainer)
+IMPORTANTE: não retorna ao prompt quando é executado. Se retornou ao prompt, corrija o erro informado e execute ele novamente.
+
+# Teste o acesso externo ao seu computador
+
+Deixe o programa inlets rodando na atual janela de comando e *abra uma nova janela de *. Na nova janela de comando vá para o diretório onde os programas executáveis estão e crie nele um arquivo de texto simples chamado *caddyfile* (sem extensão mesmo) e coloque nele o seguinte conteúdo:
+
+```
+:2015
+
+respond "Funcionou!!! Acessando um site no meu compuatdor local usando uma URL pública."
+```
+
+Depois de salvar o arquivo execute o seguinte comando:
+
+```
+caddy_windows_amd64.exe run --config=caddyfile
+```
+
+Em seguida abra o seu navegador e acesse a URL https://ẼNDERECODACONEXAO observe se o texto correto é exibido.
+
