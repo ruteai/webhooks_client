@@ -48,7 +48,7 @@ IMPORTANTE: não retorna ao prompt quando é executado. Se retornou ao prompt, c
 
 # Teste o acesso externo ao seu computador
 
-Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas executáveis estão e crie nele um arquivo de texto simples chamado **`caddyfile`** (sem extensão mesmo) e coloque nele o seguinte conteúdo:
+Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas executáveis estão e crie um arquivo de texto simples (use o notepad) chamado **`caddyfile`** (sem extensão mesmo) e coloque nele o seguinte conteúdo:
 
 ```
 :2015
