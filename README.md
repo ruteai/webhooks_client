@@ -1,6 +1,8 @@
-# Cliente de tunnel local seguro para webhooks de integração com Rute.ai
+# Cliente local para webhooks de integração com **Rute.ai**
 
-Com o cliente de webhooks da Rute.ai, você pode conectar os serviços da Rute.ai com o seu aplicativo médico, onde quer que esteja em execução. Ele substitui o gerenciamento de VPNs, abertura de portas do firewall, aquisição de IP permanente para o seu link de acesso à internet e certificados de segurança válidos.
+Com o cliente de webhooks da **Rute.ai**, você pode conectar os serviços da **Rute.ai** com o seu aplicativo médico, onde quer que esteja em execução. Ele substitui o gerenciamento de VPNs, abertura de portas do firewall, aquisição de IP permanente para o seu link de acesso à internet e certificados de segurança válidos.
+
+Sua finalidade é permitir que um software de gestão de saúde, mesmo estando instalado em um computador local, sem um IP público acessível pela internet, possa ser integrado com a **Rute.ai**.
 
 ## Como instalar ?
 
@@ -18,7 +20,7 @@ mkdir webhook_client
 Faça o download dos seguintes aplicativos para o diretório criado anteriormente:
 
 * [Inlets para Windows](https://github.com/inlets/inlets/releases/download/3.0.0/inlets.exe)
-* [NSSM - Confgiurador de aplicativos como serviços](https://nssm.cc/ci/nssm-2.24-101-g897c7ad.zip)
+* [NSSM - Configurador de aplicativos como serviços](https://nssm.cc/ci/nssm-2.24-101-g897c7ad.zip)
 * [Caddy - Servidor HTTP para teste da conexão](https://caddyserver.com/api/download?os=windows&arch=amd64&idempotency=17322521938054)
 
 ## Teste suas credenciais
