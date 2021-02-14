@@ -6,23 +6,25 @@ Sua finalidade é permitir que um software de gestão de saúde, mesmo estando i
 
 ## Como instalar ?
 
-### Crie um diretório para a aplicação
+### Crie um diretório para os aplictivos da Rute
 
 ```
 cd /
 mkdir Rute
 cd Rute
-mkdir webhook_client
 ```
 
 ### Download de programas externos
 
 Faça o download dos seguintes aplicativos para o diretório criado anteriormente:
 
-* [Inlets para Windows](https://github.com/inlets/inlets/releases/download/3.0.0/inlets.exe)
-* [NSSM - Configurador de aplicativos como serviços](https://nssm.cc/ci/nssm-2.24-101-g897c7ad.zip)
-* [Webhooks - servidor de entrada de webhooks para executar comandos shell](https://github.com/adnanh/webhook/releases/download/2.8.0/webhook-windows-amd64.tar.gz)
 * [Caddy - Servidor HTTP para teste da conexão](https://caddyserver.com/api/download?os=windows&arch=amd64&idempotency=17322521938054)
+
+Quando o download terminar descompacte o arquivo dentro do diretório da Rute. Ao final, você terá um diretório chamadado  `webhooks_client`. Para para o diretório que corresponde ao seu sistema operacional, no caso:
+
+```
+cd webhooks_client/windows
+```
 
 ## Teste suas credenciais
 
@@ -51,18 +53,10 @@ IMPORTANTE: O `inlets` não retorna ao prompt quando é executado com sucesso. S
 
 # Teste o acesso externo ao seu computador
 
-Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas executáveis estão e crie um arquivo de texto simples (use o notepad) chamado **`caddyfile`** (sem extensão mesmo) e coloque nele o seguinte conteúdo:
+Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas executáveis estão e execute o seguinte comando:
 
 ```
-:2015
-
-respond "Funcionou!!! Acessando um site no meu computador local usando uma URL pública."
-```
-
-Depois de salvar o arquivo execute o seguinte comando:
-
-```
-caddy_windows_amd64.exe run --config=caddyfile
+caddy_windows_amd64.exe run --config=./config/caddyfile
 ```
 
 Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO e confirme se o texto correto é exibido.
