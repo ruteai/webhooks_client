@@ -21,6 +21,7 @@ Faça o download dos seguintes aplicativos para o diretório criado anteriorment
 
 * [Inlets para Windows](https://github.com/inlets/inlets/releases/download/3.0.0/inlets.exe)
 * [NSSM - Configurador de aplicativos como serviços](https://nssm.cc/ci/nssm-2.24-101-g897c7ad.zip)
+* [Webhooks - servidor de entrada de webhooks para executar comandos shell](https://github.com/adnanh/webhook/releases/download/2.8.0/webhook-windows-amd64.tar.gz)
 * [Caddy - Servidor HTTP para teste da conexão](https://caddyserver.com/api/download?os=windows&arch=amd64&idempotency=17322521938054)
 
 ## Teste suas credenciais
