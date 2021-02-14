@@ -1,3 +1,11 @@
-:2015
+{
+  admin off {}
+}
 
-respond "Funcionou!!! Acessando um site no meu computador local usando uma URL externa."
+localhost:2015 {
+  tls off
+  respond 200 {
+    body "It works!"
+    close
+  }
+}
