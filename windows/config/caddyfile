@@ -1,8 +1,8 @@
 {
-  admin off {}
+  admin off
 }
 
-localhost:2015 {
+localhost:2015  {
   tls off
   respond 200 {
     body "It works!"
