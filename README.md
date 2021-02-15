@@ -53,10 +53,10 @@ IMPORTANTE: O `inlets` não retorna ao prompt quando é executado com sucesso. S
 
 # Teste o acesso externo ao seu computador
 
-Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas executáveis estão e execute o seguinte comando:
+Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas estão e execute o seguinte comando:
 
 ```
-caddy_windows_amd64.exe run --config=./config/caddyfile
+caddy_windows_amd64.exe run --config=./config/caddyfile --adapter=caddyfile
 ```
 
 Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO e confirme se um texto similar a esse é exibido: `Funcionou!!! Acessando um servidor HTTP no seu computador local usando uma URL externa.`
