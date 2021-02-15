@@ -31,7 +31,7 @@ cd webhooks_client/windows
 Você recebeu da nossa empresa um endereço de conexão e uma chave de autenticação. Faça uma validação deles executando o seguinte comando estando dentro do diretório criado anteriormente:
 
 ```
-inlets.exe client --url wss://ENDERECODACONEXAO --upstream=http://localhost:80 --token=CHAVE
+inlets.exe client --url wss://ENDERECODACONEXAO --upstream=http://localhost:2015 --token=CHAVE
 ```
 
 Se tudo estiver correto será exibido algo parecido com isso:
@@ -59,5 +59,7 @@ Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova j
 caddy_windows_amd64.exe run --config=./config/caddyfile
 ```
 
-Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO e confirme se o texto correto é exibido.
+Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO e confirme se um texto similar a esse é exibido: `Funcionou!!! Acessando um servidor HTTP no seu computador local usando uma URL externa.`
+
+Se o texto apareceu corretamente o seu cliente de webhook está funcionado corretamente e podemos ir para o passo seguinte.
 
