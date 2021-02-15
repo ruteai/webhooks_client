@@ -14,13 +14,19 @@ mkdir Rute
 cd Rute
 ```
 
-### Download de programas externos
+### Faça o download do progama
 
-Faça o download dos seguintes aplicativos para o diretório criado anteriormente:
+Faça o download do Rute webhook client para o diretório criado anteriormente:
 
-* [Caddy - Servidor HTTP para teste da conexão](https://caddyserver.com/api/download?os=windows&arch=amd64&idempotency=17322521938054)
+* [Rute - Webhook client](https://github.com/ruteai/webhooks_client/archive/main.zip)
 
-Quando o download terminar descompacte o arquivo dentro do diretório da Rute. Ao final, você terá um diretório chamadado  `webhooks_client`. Para para o diretório que corresponde ao seu sistema operacional, no caso:
+Quando o download terminar, descompacte o arquivo dentro do diretório da Rute:
+
+```
+unzip -r main.zip
+```
+
+Ao final, você terá um diretório chamadado  `webhooks_client`. Vá para o diretório que corresponda ao seu sistema operacional, no caso:
 
 ```
 cd webhooks_client/windows
