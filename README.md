@@ -31,7 +31,7 @@ cd webhooks_client/windows
 Você recebeu da nossa empresa um endereço de conexão e uma chave de autenticação. Faça uma validação deles executando o seguinte comando estando dentro do diretório criado anteriormente:
 
 ```
-inlets.exe client --url wss://ENDERECODACONEXAO --upstream=http://localhost:2015 --token=CHAVE
+inlets.exe client --url wss://ENDERECODACONEXAO --upstream=http://localhost:8000 --token=CHAVE
 ```
 
 Se tudo estiver correto será exibido algo parecido com isso:
@@ -45,7 +45,7 @@ and Kubernetes automation.
 Find out more at: https://inlets.dev 
 
 2021/02/12 18:45:39 Starting client - version 3.0.0
-2021/02/12 18:45:39 Upstream:  => http://localhost:2015
+2021/02/12 18:45:39 Upstream:  => http://localhost:8000
 INFO[2021/02/12 18:45:39] Connecting to proxy                           url="wss://ENDERECODACONEXAO/tunnel"
 ```
 
@@ -56,17 +56,45 @@ IMPORTANTE: O `inlets` não retorna ao prompt quando é executado com sucesso. S
 Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas estão e execute o seguinte comando:
 
 ```
-caddy_windows_amd64.exe run --config=./config/caddyfile --adapter=caddyfile
+webhook.exe -port 8000 -hooks config/hooks.yaml -verbose
 ```
 
-Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO e confirme se um texto similar a esse é exibido: `Funcionou!!! Acessando um servidor HTTP no seu computador local usando uma URL externa.`
+Em seguida abra o seu navegador e acesse a URL https://reqbin.com/curl, copie o comando abaixo e coloque no local apropriado e troque E3NDERECODACONEXÃO pelo que você recebeu de nós:
 
-Se o texto apareceu corretamente o seu cliente de webhook está funcionado corretamente e podemos ir para o passo seguinte.
+```
+curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST https://ENDERECODACONEXAO/hooks/rute-webhook
+```
 
-## Teste o funcionamento do webhook
+Em seguida, clique no botão `RUN` e verifique se o `Status` é igual a **200 (OK)**. Além disso, o `Content` deve de ter algo simiular a:
 
-No pacote de aplicativos que v ocê instyalou no seu computador existe um programa que permite o recebimento de chamadas de webhook via o protocolo HTTP e com o payload no formato JSON, é o `webhook.exe`. Vamos fazer um teste usando ele.
+```
+{
+    "status": "OK",
+    "dados_recebidos_pelo_webhook": {
+        "key1": "value1",
+        "key2": "value2"
+    }
+}
+```
 
-Antes de mais nada encerre a execução `caddy_windows_amd64.exe` que você iniciou na etapa anterior usando o `CTRL+C` na janela onde ele está rodando.
+Após executar todas as etapas acima com sucesso você está com um tunel seguro pronto para integrar a **Rute.ai** com o seu aplicativo.
 
-###
+## Como fazer a integração do seu aplicativo com o webhook da Rute ?
+
+Existem duas possibilidades de se fazer a integração:
+
+### Usando um servidor HTTP já instalado no seu computador
+
+Se você já tem algum tipo de aplicação desenvolvida em PHP, NodeJS, etc está é a forma mais indicada. Apenas verifique em qual porta TCP o servidor está recebendo os comandos TCP e execute o `inlets.exe` de acordo. Vamos supor que a porta seja `80`, neste caso o comando correto para rodar o tunnel seguro seria:
+
+```
+inlets.exe client --url wss://ENDERECODACONEXAO --upstream=http://localhost:80 --token=CHAVE
+```
+
+### Recebendo os dados do webhook em um programa executável
+
+Caso você ainda não tenha nenhuma aplicação rodando em um servidor HTTP é possível fazer a integração criando um programa que seja executável por comando de linha, sem interface gráfica, e que receba os dados enviados pela Rute como parametros. No diretório onde estão os executáveis tem um exemplo, que foi o que usamos para testar a conexão. Ele foi escrito em Python e o nome dele é `webhook_client.py`.
+
+Para este tipo de integração você terá de usar o programa `webhook.exe` que nada mais é que um servidor HTTP que recebe osw dados do webhook e executa um programa passando como parametros os dados recebidos da Rute. Supondo que você criou um programa chamado `meu_webhook.exe` basta você editar o arquivo `hooks.yaml` e trocar `execute-command: ./webhook_client.exe` por `execute-command: ./meu_webhook.exe`. **Importante:** essa configuração é se o seu exedcutável está no mesmo diretório que o `webhook.exe`. Se ele estiver em outro diretório também é necessário alterar `command-working-directory` e colocar lá o diretório onde o seu executável está.
+
+A documentação completa do `webhook.exe' está em [Webhook Project](https://github.com/adnanh/webhook)
