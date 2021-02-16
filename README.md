@@ -18,7 +18,7 @@ cd Rute
 
 Faça o download do Rute webhook client para o diretório criado anteriormente:
 
-* [Rute - Webhook client](https://github.com/ruteai/webhooks_client/releases/download/v0.1.0/windows-amd64.zip)
+* [Rute - Webhook client](https://github.com/ruteai/webhooks_client/releases/download/v0.1.0/windows.zip)
 
 Quando o download terminar, descompacte o arquivo dentro do diretório da Rute e, ao final, você terá um diretório chamadado  `webhooks_client`. Vá para o diretório que corresponda ao seu sistema operacional, no caso:
 
