@@ -20,13 +20,7 @@ Faça o download do Rute webhook client para o diretório criado anteriormente:
 
 * [Rute - Webhook client](https://github.com/ruteai/webhooks_client/archive/main.zip)
 
-Quando o download terminar, descompacte o arquivo dentro do diretório da Rute:
-
-```
-unzip -r main.zip
-```
-
-Ao final, você terá um diretório chamadado  `webhooks_client`. Vá para o diretório que corresponda ao seu sistema operacional, no caso:
+Quando o download terminar, descompacte o arquivo dentro do diretório da Rute e, ao final, você terá um diretório chamadado  `webhooks_client`. Vá para o diretório que corresponda ao seu sistema operacional, no caso:
 
 ```
 cd webhooks_client/windows
@@ -57,7 +51,7 @@ INFO[2021/02/12 18:45:39] Connecting to proxy                           url="wss
 
 IMPORTANTE: O `inlets` não retorna ao prompt quando é executado com sucesso. Se retornou ao prompt, corrija o erro informado e execute ele novamente.
 
-# Teste o acesso externo ao seu computador
+## Teste o acesso externo ao seu computador
 
 Deixe o programa `inlets` rodando na atual janela de comando e **abra uma nova janela**. Na nova janela de comando vá para o diretório onde os programas estão e execute o seguinte comando:
 
@@ -69,3 +63,10 @@ Em seguida abra o seu navegador e acesse a URL https://ENDERECODACONEXAO e confi
 
 Se o texto apareceu corretamente o seu cliente de webhook está funcionado corretamente e podemos ir para o passo seguinte.
 
+## Teste o funcionamento do webhook
+
+No pacote de aplicativos que v ocê instyalou no seu computador existe um programa que permite o recebimento de chamadas de webhook via o protocolo HTTP e com o payload no formato JSON, é o `webhook.exe`. Vamos fazer um teste usando ele.
+
+Antes de mais nada encerre a execução `caddy_windows_amd64.exe` que você iniciou na etapa anterior usando o `CTRL+C` na janela onde ele está rodando.
+
+###
