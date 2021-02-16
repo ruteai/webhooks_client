@@ -1,0 +1,12 @@
+- id: rute-webhook
+  execute-command: ./webhook_client.exe
+  command-working-directory: .
+  incoming-payload-content-type: application/json
+  include-command-output-in-response: true
+  response-headers:
+  - name: Access-Control-Allow-Origin
+    value: '*'
+  - name: Content-Type
+    value: 'application/json'
+  pass-arguments-to-command:
+  - source: entire-payload
