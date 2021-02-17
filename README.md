@@ -99,3 +99,43 @@ Caso você ainda não tenha nenhuma aplicação rodando em um servidor HTTP é p
 Para este tipo de integração você terá de usar o programa `webhook.exe` que nada mais é que um servidor HTTP que recebe osw dados do webhook e executa um programa passando como parametros os dados recebidos da Rute. Supondo que você criou um programa chamado `meu_webhook.exe` basta você editar o arquivo `hooks.yaml` e trocar `execute-command: ./webhook_client.exe` por `execute-command: ./meu_webhook.exe`. **Importante:** essa configuração é se o seu exedcutável está no mesmo diretório que o `webhook.exe`. Se ele estiver em outro diretório também é necessário alterar `command-working-directory` e colocar lá o diretório onde o seu executável está.
 
 A documentação completa do `webhook.exe' está em [Webhook Project](https://github.com/adnanh/webhook)
+
+## Como usar o cliente de webhook da Rute.ai em produção
+
+Tudo o que você testou anteriormente funciona bem em um ambiente de desenvolvimento. No entanto, quando for colocar em produção existe uma exigência básica: Que o tunnel seguro seja inicado automaticamente quando o seu computador é ligado e, se depois o link para a internet cair, o tunel se reconecte automaticamnete.
+
+Para isso é necessário que o cliente do tunel seguro rode no seu computador como um serviço do sistema.
+
+Antes de mais nada encerre a execução de todos os programas dos passoas anteriores. Pode ser dando `CTRL+C` em cada janela ou fechando todas elas.
+
+### Executar o tunel seguro como um serviço do sistema
+
+Abra uma janela de comando dom direitos de administrador. Tem várias formas de fazere isto. Um exemplo está abaixo:
+
+1) Aperte o botão `WIN` no teclado do seu computador
+2) Digite `cmd`
+3) Clique em `Executar como administrador`
+4) Aceite a execução com direitos de administrador
+
+Pronto, agora temos um shell de comando com direitos de administrador e podemos continuar nosso tutorial.
+
+Em seguida, no prompt administrativo aberto vá para o diretório onde está ocloiente do tunnel `inlets.exe' e exedcute o seguinte comando:
+
+```
+nssm.exe install rute_webhooks
+```
+
+Em seguida será exibida uma tela de configuração com várias abas. Preencha elas conforme instruído a seguir (o que não constar das instruções não precisa ser alterado):
+
+**Application tab:**
+```
+Path: C:\Rute\webhooks_client\windows\inlets.exe
+Startup Directory: C:\Rute\webhooks_client\windows
+Arguments: client --url wss://ENDERECODACONEXAO --upstream=http://localhost:PORT --token=TOKEN
+```
+
+
+
+
+
+
