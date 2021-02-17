@@ -12,15 +12,16 @@ Sua finalidade é permitir que um software de gestão de saúde, mesmo estando i
 cd /
 mkdir Rute
 cd Rute
+mkdir webhooks_client
 ```
 
 ### Faça o download do progama
 
-Faça o download do Rute webhook client para o diretório criado anteriormente:
+Faça o download do programa Rute webhook client para o diretório `webhooks_client` criado anteriormente:
 
 * [Rute - Webhook client](https://github.com/ruteai/webhooks_client/releases/download/v0.1.0/windows.zip)
 
-Quando o download terminar, descompacte o arquivo dentro do diretório da Rute e, ao final, você terá um diretório chamadado  `webhooks_client`. Vá para o diretório que corresponda ao seu sistema operacional, no caso:
+Quando o download terminar, descompacte o arquivo dentro do diretório `webhooks_client` da Rute e, ao final, você terá um diretório chamadado  `webhooks_client/windows`. Vá para o diretório que corresponda ao seu sistema operacional, no caso:
 
 ```
 cd webhooks_client/windows
