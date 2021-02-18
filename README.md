@@ -134,8 +134,50 @@ Startup Directory: C:\Rute\webhooks_client\windows
 Arguments: client --url wss://ENDERECODACONEXAO --upstream=http://localhost:PORT --token=TOKEN
 ```
 
+**Details tab:**
+```
+Display name: Rute webhooks
+Description: Automatically Rute.ai secure channel
+```
 
+**Exit actions tab:**
+```
+Delay restart by: 10000 ms (10 seconds)
+```
 
+Como explicado anteriormente troque ENDERECODACONEXAO e TOKEN pelos valores que você receu de nós. Além disso troque PORT pela valor da porta TCP onde o seu aplicativo vai receber os dados da Rute.ai, ou seja, onde o seu servidor de webhooks recebe conexões HTTP.
+
+Após o serviço ter sido criado com sucesso ative ele executando:
+
+```
+nssm.exe start rute_webhooks
+```
+
+Agora é hora de testar se o serviço de tunel está funcionando. Execute o seguinte comando:
+
+```
+webhook.exe -port 8000 -hooks config/hooks.yaml -verbose
+```
+
+Em seguida abra o seu navegador e acesse a URL https://reqbin.com/curl, copie o comando abaixo e coloque no local apropriado e troque E3NDERECODACONEXÃO pelo que você recebeu de nós:
+
+```
+curl -d '{"key1":"value1", "key2":"value2"}' -H "Content-Type: application/json" -X POST https://ENDERECODACONEXAO/hooks/rute-webhook
+```
+
+Em seguida, clique no botão `RUN` e verifique se o `Status` é igual a **200 (OK)**. Além disso, o `Content` deve de ter algo simiular a:
+
+```
+{
+    "status": "OK",
+    "dados_recebidos_pelo_webhook": {
+        "key1": "value1",
+        "key2": "value2"
+    }
+}
+```
+
+Parabéns, tudo funcionou!!!
 
 
 
