@@ -1,1 +1,1 @@
-cd windows ; zip -r ../build/windows/windows.zip *.exe *.py *.bat config logs ; cd ..
+cd windows ; cp ../README.md . ; zip -r ../build/windows/windows.zip *.exe *.py *.bat *.md config logs ; cd ..
